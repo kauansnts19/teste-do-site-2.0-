@@ -6,7 +6,7 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* === BASE === */
+/* === ESTILO BASE === */
 body {
   background-color: #ffffff;
   color: #222;
@@ -41,6 +41,11 @@ header {
   gap: 20px;
 }
 
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
 .nav-links li a {
   color: white;
   text-decoration: none;
@@ -55,13 +60,37 @@ header {
   color: #e0e0e0;
 }
 
+/* ÍCONES DO MENU */
+.nav-links i {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.2;
+  transition: transform 0.2s ease;
+}
+
+.nav-links a:hover i {
+  transform: scale(1.2);
+}
+
 /* === BOTÃO DE MODO ESCURO === */
 #theme-toggle {
   background: none;
   border: none;
   color: white;
+  font-size: 1.1rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.2s ease, color 0.3s ease;
+  margin-left: 12px;
+  padding: 0;
+}
+
+#theme-toggle i {
+  width: 18px;
+  height: 18px;
+  stroke-width: 2.2;
 }
 
 #theme-toggle:hover {
@@ -69,7 +98,7 @@ header {
   color: #e0e0e0;
 }
 
-/* === HERO === */
+/* === SEÇÃO HERO === */
 .hero {
   background: linear-gradient(to right, #1e90ff, #00bfff);
   color: white;
@@ -105,7 +134,7 @@ header {
   transform: scale(1.05);
 }
 
-/* === SOBRE === */
+/* === SEÇÃO SOBRE === */
 .sobre {
   padding: 80px 20px;
   max-width: 900px;
@@ -124,7 +153,7 @@ header {
   line-height: 1.6;
 }
 
-/* === GALERIA / CARROSSEL === */
+/* === GALERIA === */
 .galeria {
   text-align: center;
   padding: 80px 20px;
@@ -136,14 +165,16 @@ header {
   color: #1e90ff;
 }
 
+/* === 🖼️ CARROSSEL AJUSTADO === */
 .carousel {
-  position: relative;
   overflow: hidden;
-  width: 1600px;
-  height: 1200px;
-  margin: auto;
+  width: 90%;
+  max-width: 800px;
+  height: auto;
+  margin: 40px auto;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  aspect-ratio: 4 / 3; /* mantém proporção */
 }
 
 .carousel-track {
@@ -152,37 +183,11 @@ header {
 }
 
 .carousel img {
-  width: 1600px;
-  height: 1200px;
-  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* mantém sem esticar */
   border-radius: 12px;
 }
-
-/* === BOTÕES DO CARROSSEL === */
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.4);
-  border: none;
-  color: white;
-  padding: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.carousel-btn:hover {
-  background: rgba(0, 0, 0, 0.6);
-}
-
-.carousel-btn i {
-  width: 24px;
-  height: 24px;
-}
-
-.prev { left: 20px; }
-.next { right: 20px; }
 
 /* === RODAPÉ === */
 footer {
@@ -198,28 +203,54 @@ body.dark-mode {
   background-color: #121212;
   color: #f5f5f5;
 }
-body.dark-mode header,
-body.dark-mode footer { background-color: #0d47a1; }
-body.dark-mode .hero { background: linear-gradient(to right, #0d47a1, #1976d2); }
 
-/* === RESPONSIVO === */
-@media (max-width: 1024px) {
-  .carousel {
-    width: 100%;
-    max-width: 1000px;
-    height: auto;
-    aspect-ratio: 4 / 3;
-  }
-  .carousel img { width: 100%; height: auto; }
+body.dark-mode header {
+  background-color: #0d47a1;
 }
 
+body.dark-mode .hero {
+  background: linear-gradient(to right, #0d47a1, #1976d2);
+}
+
+body.dark-mode .btn {
+  background: #1e88e5;
+  color: white;
+}
+
+body.dark-mode .btn:hover {
+  background: #1565c0;
+}
+
+body.dark-mode footer {
+  background-color: #0d47a1;
+}
+
+body.dark-mode .nav-links li a {
+  color: #e0e0e0;
+}
+
+body.dark-mode #theme-toggle {
+  color: #f5f5f5;
+}
+
+/* === 🔧 AJUSTE RESPONSIVO === */
 @media (max-width: 768px) {
-  .navbar { flex-direction: column; gap: 10px; }
-  .hero { padding: 60px 20px; }
-  .carousel { max-width: 700px; }
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .carousel {
+    width: 95%;
+    max-width: 600px;
+    aspect-ratio: 4 / 3;
+  }
 }
 
 @media (max-width: 480px) {
-  .logo { font-size: 1.4rem; }
-  .carousel { width: 100%; max-width: 100%; height: auto; aspect-ratio: 4 / 3; }
+  .carousel {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 4 / 3;
+  }
 }
