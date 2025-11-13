@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduConnect</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Navegação -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">EduConnect</div>
+            <ul class="nav-links">
+                <li>
+                    <a href="#sobre">
+                        <i data-lucide="book-open"></i>
+                        Sobre
+                    </a>
+                </li>
+                <li>
+                    <a href="#galeria">
+                        <i data-lucide="image"></i>
+                        Galeria
+                    </a>
+                </li>
+                <li>
+                    <a href="#contato">
+                        <i data-lucide="mail"></i>
+                        Contato
+                    </a>
+                </li>
+
+                <!-- Botão modo escuro -->
+                <li>
+                    <button id="theme-toggle" title="Alternar modo escuro">
+                        <i data-lucide="moon"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Seção Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bem-vindo ao EduConnect</h1>
+            <p>Conectando alunos, professores e escolas em um só lugar.</p>
+            <a href="#sobre" class="btn">Saiba Mais</a>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="sobre">
+        <h2>Nossa História</h2>
+        <p>
+            O <strong>EduConnect</strong> nasceu em 2025, criado por um grupo de estudantes do 2°Ano do Colégio Estadual Marechal Costa e Silva, atuando no curso de Técnico e Desenvolvimento de Sistema em aprendizado. 
+            A missão do aplicativo é facilitar a comunicação entre pais, professores e alunos, promovendo um ambiente colaborativo e acessível para todos.
+        </p>
+    </section>
+
+    <!-- Galeria -->
+    <section id="galeria" class="galeria">
+        <h2>Galeria</h2>
+        <div class="carousel">
+            <div class="carousel-track">
+                <img src="imagens/IMG-20251104-WA0012 (1).jpg" alt="Imagem 1">
+                <img src="imagens/IMG-20251029-WA0011.jpg" alt="Imagem 2">
+                <img src="imagens/IMG-20251029-WA0005.jpg" alt="Imagem 3">
+            </div>
+
+            <!-- Setas -->
+            <button class="carousel-btn prev" title="Anterior">
+                <i data-lucide="chevron-left"></i>
+            </button>
+            <button class="carousel-btn next" title="Próximo">
+                <i data-lucide="chevron-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>© 2025 EduConnect. Todos os direitos reservados aos alunos do 2ºC Desenvolvimento De Sistemas.</p>
+    </footer>
+
+    <!-- Script do carrossel -->
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(track.children);
+        const prevBtn = document.querySelector('.prev');
+        const nextBtn = document.querySelector('.next');
+        let index = 0;
+
+        function showSlide(i) {
+            track.style.transform = `translateX(-${i * 100}%)`;
+        }
+
+        // Botões manuais
+        prevBtn.addEventListener('click', () => {
+            index = (index - 1 + slides.length) % slides.length;
+            showSlide(index);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            index = (index + 1) % slides.length;
+            showSlide(index);
+        });
+
+        // Auto play (5 segundos)
+        setInterval(() => {
+            index = (index + 1) % slides.length;
+            showSlide(index);
+        }, 5000);
+    </script>
+
+    <!-- Script do modo escuro -->
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+        }
+
+        toggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', theme);
+        });
+    </script>
+
+    <!-- Inicializa os ícones Lucide -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
