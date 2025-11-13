@@ -1,27 +1,242 @@
-.video-mockup {
+/* === RESET GERAL === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* === BASE === */
+body {
+  background-color: #ffffff;
+  color: #222;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #f5f5f5;
+}
+
+/* === CABEÇALHO === */
+header {
+  background-color: #1e90ff;
+  padding: 15px 30px;
+}
+
+.navbar {
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 50px 0;
-  background: #f0f0f0; /* cor de fundo da seção */
+  justify-content: space-between;
 }
 
-.phone-frame {
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #fff;
+  gap: 10px;
+}
+
+.logo img {
+  height: 70px;
+  width: auto;
+}
+
+/* === LINKS === */
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #d1e9ff;
+}
+
+/* === BOTÃO DE TEMA === */
+#theme-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.2);
+}
+
+/* === BOTÃO DE DOWNLOAD === */
+.download-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
   position: relative;
-  width: 300px;  /* largura do celular */
-  height: 600px; /* altura do celular */
-  background: url('imagens/celular.png') no-repeat center/cover; /* imagem do celular */
-  border-radius: 30px; /* borda do celular */
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  font-size: 1rem;
+  transition: transform 0.3s ease;
 }
 
-.screen-video {
+.download-btn .download-icon {
+  transition: color 0.3s ease;
+}
+
+.download-btn .download-text {
+  background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
+  background-size: 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rgbAnim 4s linear infinite;
+}
+
+.download-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 10px rgba(30,144,255,0.5);
+}
+
+/* 🌈 Animação RGB */
+@keyframes rgbAnim {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* === HERO === */
+.hero {
+  background: linear-gradient(135deg, #1e90ff, #00bfff);
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background-color: white;
+  color: #1e90ff;
+  padding: 10px 22px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background-color: #e0f2ff;
+  transform: scale(1.05);
+}
+
+/* === SOBRE === */
+.sobre {
+  padding: 60px 20px;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.sobre h2 {
+  font-size: 2rem;
+  color: #1e90ff;
+  margin-bottom: 15px;
+}
+
+/* === GALERIA === */
+.galeria {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* === TÍTULO GALERIA - MOSTRA APENAS A PRIMEIRA LETRA === */
+.titulo-galeria {
+  font-size: 2.4rem;
+  color: #1e90ff;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 5px rgba(30,144,255,0.3);
+  display: inline-block;
+  position: relative;
+}
+
+/* Esconde todas as letras após a primeira usando ::after */
+.titulo-galeria::after {
+  content: attr(data-text);
+  color: transparent;
   position: absolute;
-  top: 12%;   /* ajusta conforme o encaixe da tela */
-  left: 8%;   /* ajusta conforme o encaixe da tela */
-  width: 84%; /* largura da área da tela do celular */
-  height: 76%; /* altura da área da tela do celular */
-  object-fit: cover;
-  border-radius: 15px; /* arredonda os cantos do vídeo para encaixar na tela */
+  left: 1.2em; /* ajusta para não sobrepor a primeira letra */
+}
+
+/* === CARROSSEL === */
+.carousel {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 1s ease;
+}
+
+.carousel-item {
+  flex: 0 0 100%;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 20px;
+}
+
+/* === RODAPÉ === */
+footer {
+  background-color: #1e90ff;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+}
+
+/* === MODO ESCURO === */
+.dark-mode .btn {
+  background-color: #222;
+  color: #f5f5f5;
+}
+
+.dark-mode .btn:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.dark-mode .download-btn {
+  background-color: #222;
 }
